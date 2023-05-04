@@ -99,6 +99,7 @@ public class StartWindow extends Application {
     }
 
     private void startAction(){
+        questionIndex = 1;
         hbxBot.getChildren().remove(btnStart);
         hbxBot.getChildren().add(btnNo);
         hbxBot.getChildren().add(btnYes);
@@ -123,7 +124,6 @@ public class StartWindow extends Application {
     }
 
     private void calculateResult(){
-
 
         if(answers.get(1) == true){
             specs.remove("Warrior", "Arms");
@@ -163,7 +163,111 @@ public class StartWindow extends Application {
             specs.remove("Warlock", "Demonology");
         }
 
+        if(answers.get(3) == true){
+            //magic
+            specs.remove("Warrior", "Arms");
+            specs.remove("Warrior", "Fury");
+            specs.remove("Rogue", "Assassination");
+            specs.remove("Rogue", "Outlaw");
+            specs.remove("Rogue", "Subtlety");
+            specs.remove("Monk", "Windwalker");
+            specs.remove("Hunter", "Beast Mastery");
+            specs.remove("Hunter", "Marksmanship");
+            specs.remove("Hunter", "Survival");
+            specs.remove("Druid", "Feral");
+            specs.remove("Demon Hunter", "Havoc");
+            specs.remove("Death Knight", "Frost");
+        }
+        else if (answers.get(3) == false){
+            specs.remove("Warlock", "Affliction");
+            specs.remove("Warlock", "Demonology");
+            specs.remove("Warlock", "Destruction");
+            specs.remove("Shaman", "Elemental");
+            specs.remove("Shaman", "Enhancement");
+            specs.remove("Paladin", "Retribution");
+            specs.remove("Priest", "Shadow");
+            specs.remove("Mage", "Arcane");
+            specs.remove("Mage", "Fire");
+            specs.remove("Mage", "Frost");
+            specs.remove("Druid", "Balance");
+            specs.remove("Death Knight", "Unholy");
+        }
 
+        if(answers.get(4) == true){
+            specs.remove("Druid", "Feral");
+            specs.remove("Priest", "Shadow");
+            specs.remove("Rogue", "Subtlety");
+            specs.remove("Warlock", "Demonology");
+        }
+
+        if(answers.get(5) == true){
+            specs.remove("Priest", "Shadow");
+            specs.remove("Warlock", "Affliction");
+            specs.remove("Warlock", "Demonology");
+            specs.remove("Warlock", "Destruction");
+            specs.remove("Paladin", "Retribution");
+            specs.remove("Death Knight", "Frost");
+            specs.remove("Death Knight", "Unholy");
+        }
+
+        if(answers.get(6) == true){
+            specs.remove("Monk", "Windwalker");
+            specs.remove("Demon Hunter", "Havoc");
+            specs.remove("Priest", "Shadow");
+            specs.remove("Paladin", "Retribution");
+            specs.remove("Evoker", "Devestation");
+        }
+
+        if(answers.get(9) == true){
+            specs.remove("Priest", "Shadow");
+            specs.remove("Demon Hunter", "Havoc");
+            specs.remove("Monk", "Windwalker");
+            specs.remove("Paladin", "Retribution");
+            specs.remove("Warrior", "Arms");
+            specs.remove("Warrior", "Fury");
+        }
+
+
+        if(specs.isEmpty()){
+            lblTop.setText("Sorry...");
+            lblCenter.setText("There are no specializations suitable for you. Maybe you should go play Genshin instead");
+
+        }
+        else{
+            lblTop.setText("You should play: ");
+            lblCenter.setText(specs.toString());
+        }
+        hbxBot.getChildren().remove(btnNo);
+        hbxBot.getChildren().remove(btnYes);
+        hbxBot.getChildren().add(btnStart);
+        btnStart.setText("Play again");
+
+        specs.clear();
+        specs.put("Death Knight", "Frost");
+        specs.put("Death Knight", "Unholy");
+        specs.put("Demon Hunter", "Havoc");
+        specs.put("Druid", "Balance");
+        specs.put("Druid", "Feral");
+        specs.put("Evoker", "Devestation");
+        specs.put("Hunter", "Beast Mastery");
+        specs.put("Hunter", "Marksmanship");
+        specs.put("Hunter", "Survival");
+        specs.put("Mage", "Arcane");
+        specs.put("Mage", "Fire");
+        specs.put("Mage", "Frost");
+        specs.put("Monk", "Windwalker");
+        specs.put("Paladin", "Retribution");
+        specs.put("Priest", "Shadow");
+        specs.put("Rogue", "Assassination");
+        specs.put("Rogue", "Outlaw");
+        specs.put("Rogue", "Subtlety");
+        specs.put("Shaman", "Elemental");
+        specs.put("Shaman", "Enhancement");
+        specs.put("Warlock", "Affliction");
+        specs.put("Warlock", "Demonology");
+        specs.put("Warlock", "Destruction");
+        specs.put("Warrior", "Arms");
+        specs.put("Warrior", "Fury");
 
     }
 
@@ -229,7 +333,8 @@ public class StartWindow extends Application {
 
                 lblTop.setText("Question 8");
                 lblCenter.setText("High survivability is important for my class");
-
+                btnNo.setText("No");
+                btnYes.setText("Yes");
                 break;
             case 9:
 
@@ -241,7 +346,7 @@ public class StartWindow extends Application {
             case 10:
 
                 lblTop.setText("Question 10");
-                lblCenter.setText("I NEED to have a required utility for M+ (Battle ress, lust/hero, rogue)");
+                lblCenter.setText("High Damage Potential is important to me");
                 btnNo.setText("No");
                 btnYes.setText("Yes");
                 break;
